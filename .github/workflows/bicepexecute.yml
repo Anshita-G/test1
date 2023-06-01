@@ -23,9 +23,9 @@ jobs:
           failOnStdErr: false
 
       - name: Check out code
-        uses: actions/checkout@v2
-      - name: Run Chef Delivery
-        uses: actionshub/chef-delivery@main
+        uses: actions/checkout@master
+      - name: install chef
+        uses: actionshub/chef-install@main
         env:
           CHEF_LICENSE: accept-no-persist
 
