@@ -25,7 +25,6 @@ jobs:
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
           export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
-          chef env --chef-license accept
-          inspec exec . -t azure://
+          inspec exec . -t azure:// --chef-license=accept
 
         shell: bash
