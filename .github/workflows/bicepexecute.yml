@@ -12,16 +12,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy Bicep file
-      - name: deploy
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: ./main.bicep
-          parameters: "storagePrefix=mystore storageSKU=Standard_LRS"
-          failOnStdErr: false
-
       - name: install inspec
         run: |
           curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
@@ -34,4 +24,3 @@ jobs:
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
           export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
-          --chef-license accept-no-persist
