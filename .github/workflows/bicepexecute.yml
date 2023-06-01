@@ -19,7 +19,7 @@ jobs:
 
       - name: run inspec test
         run: |
-          inspec plugin install inspec-azure
+          inspec plugin install inspec-azure --chef-license accept-no-persist
           export AZURE_SUBSCRIPTION_ID="$(AZURE_SUBSCRIPTION_ID)"
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
