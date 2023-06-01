@@ -34,4 +34,4 @@ jobs:
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
           export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
-          inspec exec . -t azure:// --chef-license accept-no-persist --reporter cli junit:inspectestresults.xml
+          --chef-license accept-no-persist
