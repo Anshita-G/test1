@@ -22,10 +22,12 @@ jobs:
           parameters: "storagePrefix=mystore storageSKU=Standard_LRS"
           failOnStdErr: false
 
-      - name: install inspec
-        run: |
-          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
-        shell: bash
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run Chef Delivery
+        uses: actionshub/chef-delivery@main
+        env:
+          CHEF_LICENSE: accept-no-persist
 
       - name: run inspec test
         run: |
@@ -34,4 +36,4 @@ jobs:
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
           export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
-          inspec exec . -t azure:// --chef-license=accept --
+          inspec exec . -t azure://
