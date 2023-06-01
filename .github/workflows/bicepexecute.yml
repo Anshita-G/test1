@@ -14,12 +14,12 @@ jobs:
 
       - name: install inspec
         run: |
-          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+          curl https://omnitruck.chef.io/install.sh --chef-license accept-no-persist | sudo bash -s -- -P inspec
         shell: bash
 
       - name: run inspec test
         run: |
-          inspec plugin install inspec-azure --chef-license accept-no-persist
+          inspec plugin install inspec-azure 
           export AZURE_SUBSCRIPTION_ID="$(AZURE_SUBSCRIPTION_ID)"
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
