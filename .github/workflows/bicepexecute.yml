@@ -29,4 +29,5 @@ jobs:
         env:
           CHEF_LICENSE: accept-no-persist
         run: |
+          export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
           inspec exec . -t azure:// --reporter cli junit:inspectestresults.xml
