@@ -32,7 +32,7 @@ jobs:
         env:
           CHEF_LICENSE: accept-no-persist
         run: |
-          inspec plugin install inspec-azure
+
           export AZURE_SUBSCRIPTION_ID="$(AZURE_SUBSCRIPTION_ID)"
           export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
           export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
