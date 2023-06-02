@@ -1,18 +1,13 @@
 @minLength(3)
 @maxLength(11)
-param storagePrefix string
+
 
 @allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-  'Standard_RAGRS'
-  'Standard_ZRS'
   'Premium_LRS'
   'Premium_ZRS'
-  'Standard_GZRS'
-  'Standard_RAGZRS'
 ])
-param storageSKU string = 'Standard_LRS'
+
+param storageSKU string = 'Premium_ZRS'
 
 param location string = resourceGroup().location
 
