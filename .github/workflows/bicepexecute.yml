@@ -38,4 +38,4 @@ jobs:
           export AZURE_CLIENT_ID="$env:AZURE_CLIENT_ID"
           export AZURE_CLIENT_SECRET="$env:AZURE_CLIENT_SECRET"
           export AZURE_TENANT_ID="$env:AZURE_TENANT_ID"
-          inspec exec . -t azure:// --reporter cli junit:inspectestresults.xml
+          inspec exec . -t azure://
