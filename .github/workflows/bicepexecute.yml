@@ -1,16 +1,14 @@
-on: [push, workflow_dispatch]
-name: Azure ARM
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout code
-      - uses: actions/checkout@main
+name: Chef InSpec
 
-        # Log into Azure
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Install Chef InSpec
         run: |
@@ -21,14 +19,6 @@ jobs:
           echo "license:" >> inspec.yml
           echo "  acceptance: 'accept-no-persist'" >> inspec.yml
 
-      - name: run inspec test
+      - name: Run Chef InSpec Tests
         run: |
-          inspec plugin install inspec-azure 
-          echo "license:" >> inspec.yml
-          echo "  acceptance: 'accept-no-persist'" >> inspec.yml
-          export AZURE_SUBSCRIPTION_ID="$(AZURE_SUBSCRIPTION_ID)"
-          export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
-          export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
-          export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
-          inspec exec controls
-        shell: bash
+          inspec exec . -t azure://
