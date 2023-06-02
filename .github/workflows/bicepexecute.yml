@@ -17,13 +17,11 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RG }}
+          resourceGroupName: ${{ secrets.AZURE_RG}}
           template: ./main.bicep
           failOnStdErr: false
 
       - name: Install Chef InSpec
-        env:
-          CHEF_LICENSE: accept-no-persist
         run: |
           curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
 
