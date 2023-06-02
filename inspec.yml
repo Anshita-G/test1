@@ -6,9 +6,9 @@ copyright_email: you@example.com
 license: Apache-2.0
 summary: An InSpec Compliance Profile For Azure
 version: 0.1.0
-inspec_version: '>= 2.2.7'
+inspec_version: ">= 2.2.7"
 depends:
-- name: inspec-azure
-  url: https://github.com/inspec/inspec-azure/archive/main.tar.gz
+  - name: inspec-azure
+    url: https://github.com/inspec/inspec-azure/archive/main.tar.gz
 supports:
-- platform: azure
+  - platform: azure
