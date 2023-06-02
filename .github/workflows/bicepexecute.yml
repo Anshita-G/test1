@@ -16,7 +16,7 @@ jobs:
       - name: deploy arm template
         uses: azure/arm-deploy@v1
         with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ secrets.AZURE_RG}}
           template: ./main.bicep
           failOnStdErr: false
@@ -28,9 +28,13 @@ jobs:
       - name: Run Chef InSpec Tests
         env:
           CHEF_LICENSE: accept-no-persist
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         run: |
-          export AZURE_SUBSCRIPTION_ID="$(AZURE_SUBSCRIPTION_ID)"
-          export AZURE_CLIENT_ID="$(AZURE_CLIENT_ID)"
-          export AZURE_CLIENT_SECRET="$(AZURE_CLIENT_SECRET)"
-          export AZURE_TENANT_ID="$(AZURE_TENANT_ID)"
+          export AZURE_SUBSCRIPTION_ID="$env:AZURE_SUBSCRIPTION_ID"
+          export AZURE_CLIENT_ID="$env:AZURE_CLIENT_ID"
+          export AZURE_CLIENT_SECRET="$env:AZURE_CLIENT_SECRET"
+          export AZURE_TENANT_ID="$env:AZURE_TENANT_ID"
           inspec exec . -t azure:// --reporter cli junit:inspectestresults.xml
