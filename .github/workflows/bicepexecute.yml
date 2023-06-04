@@ -24,10 +24,4 @@ jobs:
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }} 
         run: |
-          inspec azure \
-            --subscription-id "$AZURE_SUBSCRIPTION_ID" \
-            --client-id "$AZURE_CLIENT_ID" \
-            --client-secret "$AZURE_CLIENT_SECRET" \
-            --tenant-id "$AZURE_TENANT_ID" \
-            --controls storage.rb
-            inspec exec . -t azure://
+          inspec exec . -t azure://
