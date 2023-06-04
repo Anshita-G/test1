@@ -33,7 +33,6 @@ jobs:
           AZURE_CLIENT_SECRET: xb68Q~kNUIy9td30K4cZLII5pFt8lnNLbbgPpciT
           AZURE_TENANT_ID: bf5fa81f-9831-46a2-8bbf-6ca4c9a9eb4c
         run: |
-
           export AZURE_SUBSCRIPTION_ID="$env:AZURE_SUBSCRIPTION_ID"
           export AZURE_CLIENT_ID="$env:AZURE_CLIENT_ID"
           export AZURE_CLIENT_SECRET="$env:AZURE_CLIENT_SECRET"
