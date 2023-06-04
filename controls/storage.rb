@@ -1,4 +1,4 @@
-describe azure_resource_group(name: 'aest') do
+describe azure_resource_group(name: 'atest') do
     it { should exist }
 end
 
