@@ -28,13 +28,9 @@ jobs:
       - name: Run Chef InSpec Tests
         env:
           CHEF_LICENSE: accept-no-persist
-          AZURE_SUBSCRIPTION_ID: aa9021c8-9d60-4e88-8ba9-d8188788d9d5
-          AZURE_CLIENT_ID: 05e932b6-9470-496d-be64-b91216a02293
-          AZURE_CLIENT_SECRET: xb68Q~kNUIy9td30K4cZLII5pFt8lnNLbbgPpciT
-          AZURE_TENANT_ID: bf5fa81f-9831-46a2-8bbf-6ca4c9a9eb4c
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }} 
         run: |
-          export AZURE_SUBSCRIPTION_ID="$env:AZURE_SUBSCRIPTION_ID"
-          export AZURE_CLIENT_ID="$env:AZURE_CLIENT_ID"
-          export AZURE_CLIENT_SECRET="$env:AZURE_CLIENT_SECRET"
-          export AZURE_TENANT_ID="$env:AZURE_TENANT_ID"
           inspec exec . -t azure://
